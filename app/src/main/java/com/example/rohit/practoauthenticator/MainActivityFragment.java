@@ -78,9 +78,16 @@ public class MainActivityFragment extends Fragment {
                 "31323334";
         long T0 = 0;
         long X = 60 * 1000;
-        if(currentTime == null)
-            currentTime = System.currentTimeMillis();
-        Log.d(LOG_TAG,"Current Time on System is : "+ Long.toString(currentTime) +"ms");
+        if(currentTime == null) {
+
+            for(int i=0;i<3000;i++){
+                if(currentTime != null) break;
+            }
+            if(currentTime == null) {
+                currentTime = System.currentTimeMillis();
+                Log.d(LOG_TAG, "Trying to generate pin with system time.");
+            }
+        }
         String steps = "0";
         try {
                 long T = (currentTime - T0)/X;
